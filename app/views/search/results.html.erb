@@ -1,0 +1,14 @@
+<h2>Search</h2>
+
+<p>You searched for <%= @query %></p>
+
+<h3>Results:</h3>
+
+<ul>
+  <% for artist in @artists %>
+  <% unless artist.css("name").first.nil? %>
+  <li><%= artist.css("name").first.content %>
+    <%= "- " + artist.css("disambiguation").first.content unless artist.css("disambiguation").first.nil? %></li>
+  <% end %>
+  <% end %>
+</ul>

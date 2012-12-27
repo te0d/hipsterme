@@ -36,3 +36,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+# devise for authentication
+gem 'devise'
+
+# nokogiri for xml parsing
+gem 'nokogiri'
