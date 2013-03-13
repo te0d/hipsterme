@@ -1,6 +1,8 @@
 class SearchController < ApplicationController
   require 'open-uri'
   
+  before_filter :authenticate_user!
+  
   def index
   end
   

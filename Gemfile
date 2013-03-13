@@ -42,3 +42,5 @@ gem 'devise'
 
 # nokogiri for xml parsing
 gem 'nokogiri'
+
+gem 'minitest'
