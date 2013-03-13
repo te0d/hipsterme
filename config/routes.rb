@@ -1,4 +1,10 @@
 Hipsterme::Application.routes.draw do
+  get "listen/index"
+
+  post "listen/new"
+
+  get "listen/destroy"
+
   get "search/index"
   get "search/results"
 

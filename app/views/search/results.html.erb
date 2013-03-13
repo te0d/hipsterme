@@ -8,7 +8,9 @@
   <% for artist in @artists %>
   <% unless artist.css("name").first.nil? %>
   <li><%= artist.css("name").first.content %>
-    <%= "- " + artist.css("disambiguation").first.content unless artist.css("disambiguation").first.nil? %></li>
+    <%= "- " + artist.css("disambiguation").first.content unless artist.css("disambiguation").first.nil? %>
+    <%= button_to "Listen", {:controller => 'listen', :action => 'new', :mbid => artist.attribute("id")} %>
+  </li>
   <% end %>
   <% end %>
 </ul>
