@@ -1,9 +1,9 @@
 Hipsterme::Application.routes.draw do
-  get "listen/index"
+  get "bump/index"
 
-  post "listen/new"
+  post "bump/new"
 
-  get "listen/destroy"
+  get "bump/destroy"
 
   get "search/index"
   get "search/results"

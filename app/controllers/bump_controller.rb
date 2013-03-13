@@ -1,4 +1,4 @@
-class ListenController < ApplicationController
+class BumpController < ApplicationController
   before_filter :authenticate_user!
   
   def index
@@ -10,7 +10,7 @@ class ListenController < ApplicationController
     brainzResults = Nokogiri::XML(open("http://www.musicbrainz.org/ws/2/artist/#{band_mbid}"))
     band_name = brainzResults.css("name").first.content
     band = Band.where(:mbid => band_mbid, :name => band_name).first_or_create
-    current_user.bands.push(band)
+    current_user.bands.push(band) unless current_user.bands.include?(band)
   end
 
   def destroy
