@@ -1,4 +1,9 @@
 <h2>Current Bands You Are Listening To</h2>
-<% for band in @user.bands %>
-  <li><%= band.name %></li>
+<table>
+<% for band in @bands %>
+  <tr>
+    <td><%= image_tag band.image.url %></td>
+    <td><%= band.name %></td>
+  </tr>
 <% end %>
+</table>

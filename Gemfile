@@ -44,3 +44,6 @@ gem 'devise'
 gem 'nokogiri'
 
 gem 'minitest'
+
+# paperclip for grabbing and storing images
+gem 'paperclip'
