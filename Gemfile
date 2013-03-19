@@ -47,3 +47,5 @@ gem 'minitest'
 
 # paperclip for grabbing and storing images
 gem 'paperclip'
+# AWS S3 for storing images
+gem 'aws-sdk'
