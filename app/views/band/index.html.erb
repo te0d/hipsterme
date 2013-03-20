@@ -12,6 +12,9 @@
         </div>
         <div class="media-body">
           <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
+          <% unless band.bumps.empty? %>
+            <p>oldest bump by <%= band.bumps.first.user.username %></p>
+          <% end %>
         </div>
       </div>
     <% end %>
