@@ -1,8 +1,9 @@
 Hipsterme::Application.routes.draw do
+  match "bands" => "band#index"
+  match "bands/:id" => "band#show", :as => :band
+
   get "bump/index"
-
   post "bump/new"
-
   get "bump/destroy"
 
   get "search/index"

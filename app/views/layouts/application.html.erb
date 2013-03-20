@@ -16,6 +16,7 @@
         <%# have to use :controller => /foo since it is not
           # a restful route and tries to render it in the
           # devise namespace %>
+        <li><%= link_to 'Browse', bands_url %></li>
         <li><%= link_to 'Search', :controller => '/search', :action => 'index' %></li>
         <li><%= link_to 'Bands You Bump', :controller => '/bump', :action => 'index' %></li>
       </ul>

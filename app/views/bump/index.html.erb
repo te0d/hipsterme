@@ -1,9 +1,14 @@
-<h2>Current Bands You Are Listening To</h2>
-<table>
+<div class="page-header">
+  <h1>Bands You're Bumping</h1>
+</div>
+
+<ul class="thumbnails">
 <% for band in @bands %>
-  <tr>
-    <td><%= image_tag band.image.url %></td>
-    <td><%= band.name %></td>
-  </tr>
+  <li class="span4">
+    <div class="thumbnail">
+      <%= image_tag band.image.url %>
+      <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
+    </div>
+  </li>
 <% end %>
-</table>
+</ul>

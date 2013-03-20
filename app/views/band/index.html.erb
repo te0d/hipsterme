@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="span6">
+    <h2>New Bumping Bands</h2>
+    <% for band in @new_bumps %>
+      <div class="media">
+        <div class="pull-left">
+          <%= image_tag band.image.url, :class => "img-polaroid" %>
+        </div>
+        <div class="media-body">
+          <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="span6">
+    <h2>What Your Friends Are Bumping</h2>
+  </div>
+</div>

@@ -1,23 +1,5 @@
 <div class="hero-unit">
   <h1>Welcome To HipsterMe</h1>
   <p>HipsterMe is a way for you and your friends to share what music they're bumping.</p>
-</div>
-
-<div class="row">
-  <div class="span6">
-    <h2>New Bumping Bands</h2>
-    <% for band in @new_bumps %>
-      <div class="row">
-        <div class="span3">
-          <%= image_tag band.image.url, :class => "img-polaroid" %>
-        </div>
-        <div class="span3">
-          <%= band.name %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <div class="span6">
-    <h2>What Your Friends Are Bumping</h2>
-  </div>
+  <a href="/bands"><button class="btn btn-large btn-primary">Check out some bands!</button></a>
 </div>
