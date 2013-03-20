@@ -29,6 +29,7 @@ class BumpController < ApplicationController
         image_url = image.content if image.attr('size') == 'extralarge'
       end
       band.image = open(image_url) unless image_url.nil?
+      band.listens.push(Listen.new(:count => lastfmXML.css("listeners").first.content))
       
       band.save
       

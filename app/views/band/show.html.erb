@@ -1,1 +1,10 @@
 <h1><%= @band.name %></h1>
+
+<table>
+<% for listen in @band.listens %>
+  <tr>
+    <td><%= listen.created_at %></td>
+    <td><%= listen.count %></td>
+  </tr>
+<% end %>
+</table>

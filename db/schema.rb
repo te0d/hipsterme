@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130314174933) do
+ActiveRecord::Schema.define(:version => 20130320142600) do
 
   create_table "bands", :force => true do |t|
     t.string   "mbid"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(:version => 20130314174933) do
     t.integer "band_id"
     t.integer "user_id"
   end
+
+  create_table "listens", :force => true do |t|
+    t.integer  "band_id"
+    t.integer  "count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "listens", ["band_id"], :name => "index_listens_on_band_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
