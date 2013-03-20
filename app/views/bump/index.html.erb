@@ -8,6 +8,7 @@
     <div class="thumbnail">
       <%= image_tag band.image.url(:thumb) %>
       <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
+      <%= link_to 'Unbump', bump_destroy_url(:id => band.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger" %>
     </div>
   </li>
 <% end %>

@@ -4,8 +4,7 @@ Hipsterme::Application.routes.draw do
 
   get "bump/index"
   post "bump/new"
-  get "bump/destroy"
-
+  match "bump/destroy/:id" => "bump#destroy", :as => :bump_destroy
   get "search/index"
   get "search/results"
 

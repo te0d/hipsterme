@@ -16,3 +16,7 @@
 
 # Ignore all text editor log files
 /.redcar
+
+# Ignore precompiled assets and saved images
+/public/assets
+/public/system
