@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>HipsterMe</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -7,13 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
+  <div class="navbar">
+    <div class="navbar-inner">
+      <%= link_to 'HipsterMe', root_url, :class => "brand" %>
+      
+      <ul class="nav">
+        <%# have to use :controller => /foo since it is not
+          # a restful route and tries to render it in the
+          # devise namespace %>
+        <li><%= link_to 'Search', :controller => '/search', :action => 'index' %></li>
+        <li><%= link_to 'Bands You Bump', :controller => '/bump', :action => 'index' %></li>
+      </ul>
+      <ul class="nav pull-right">
+        <%= render 'devise/menu/registration_items' %>
+        <%= render 'devise/menu/login_items' %>
+      </ul>
+    </div>
+  </div>
 
-  <h1><%= link_to 'HipstαrMα', root_url %></h1>
 
-  <%= render 'devise/menu/registration_items' %>
-  <%= render 'devise/menu/login_items' %>  
 
-<%= yield %>
+  
+  <div class="container">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

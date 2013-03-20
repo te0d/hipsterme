@@ -49,3 +49,6 @@ gem 'minitest'
 gem 'paperclip'
 # AWS S3 for storing images
 gem 'aws-sdk'
+
+# Twitter's Bootstrap CSS framework
+gem 'bootstrap-sass'
