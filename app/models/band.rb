@@ -1,7 +1,8 @@
 class Band < ActiveRecord::Base
   attr_accessible :description, :mbid, :name, :image, :image_file_name
   
-  has_and_belongs_to_many :users
+  has_many :bumps
+  has_many :users, :through => :bumps
   has_many :listens
   
   has_attached_file :image, :styles => {:thumb => ["300x200"]}

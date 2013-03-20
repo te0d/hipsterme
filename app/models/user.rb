@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   attr_accessor :login
    attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me
   
-  has_and_belongs_to_many :bands
+  has_many :bumps
+  has_many :bands, :through => :bumps
   
   validates_presence_of :username
   validates_uniqueness_of :username
