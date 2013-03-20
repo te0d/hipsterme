@@ -6,7 +6,7 @@
 <% for band in @bands %>
   <li class="span4">
     <div class="thumbnail">
-      <%= image_tag band.image.url %>
+      <%= image_tag band.image.url(:thumb) %>
       <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
     </div>
   </li>
