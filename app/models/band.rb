@@ -1,5 +1,5 @@
 class Band < ActiveRecord::Base
-  attr_accessible :description, :mbid, :name, :image, :image_file_name
+  attr_accessible :creator_id, :description, :mbid, :name, :image, :image_file_name
   
   has_many :bumps
   has_many :users, :through => :bumps
