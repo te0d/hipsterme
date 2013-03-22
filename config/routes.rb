@@ -12,6 +12,9 @@ Hipsterme::Application.routes.draw do
   devise_for :users
   
   match "users/:id" => "users#show", :as => :user_show
+  match "user" => "users#index", :as => :user_page
+  match "user/add_friend" => "users#add_friend", :as => :user_add_friend
+  match "user/del_friend" => "users#del_friend", :as => :user_del_friend
 
   get "welcome/index"
 

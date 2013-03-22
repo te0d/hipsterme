@@ -46,8 +46,8 @@ class BumpController < ApplicationController
   end
 
   def destroy
-    @band = Band.find(params[:id])
-    current_user.bands.delete(@band)
+    band = Band.find(params[:id])
+    current_user.bands.delete(band)
     
     redirect_to :action => 'index'
   end

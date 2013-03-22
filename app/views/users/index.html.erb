@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1><%= @user.username %>
+    <%= link_to 'Edit Account', edit_user_registration_path, :class => "btn btn-primary" %></h1>
+</div>
+
+<p>a member for <%= time_ago_in_words(@user.created_at) %></p>
+
+<h2>Friends</h2>
+
+<ul>
+<% for friend in @user.friends %>
+  <li>
+    <%# !! move queries to controller %>
+    <% friend_user = User.find(friend.friend_id) %>
+    <%= link_to friend_user.username, user_show_url(:id => friend_user.id) %>
+    <%= link_to 'Remove', user_del_friend_url(:id => friend.id), :class => "btn btn-mini btn-danger" %>
+  </li>
+<% end %>
+</ul>

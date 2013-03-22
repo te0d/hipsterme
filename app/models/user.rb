@@ -4,16 +4,22 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  attr_accessor :login
-   attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me
   
+  # login field can be either username or email
+  attr_accessor :login
+  attr_accessible :login, :username, :email, :password, :password_confirmation, :remember_me
+  
+  # allow users to add friends to follow (one-way)
+  has_many :friends
+  
+  # allow users to promote bands through the bumps table
   has_many :bumps
   has_many :bands, :through => :bumps
   
   validates_presence_of :username
   validates_uniqueness_of :username
   
+  # allows login field to identify the username or email
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

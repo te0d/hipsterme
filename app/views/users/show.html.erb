@@ -1,13 +1,18 @@
 <div class="page-header">
-  <h1><%= @user.username %></h1>
+  <h1>
+    <%= @other_user.username %>
+    <% unless @is_friend %>
+      <%= link_to 'Add Friend', user_add_friend_path(:id => @other_user.id), :class => "inline btn btn-primary" %>
+    <% end %>
+  </h1>
 </div>
 
-<p>member for <%= time_ago_in_words(@user.created_at) %></p>
+<p>member for <%= time_ago_in_words(@other_user.created_at) %></p>
 
 <h2>Bumps</h2>
 
 <ul class="thumbnails">
-<% for band in @user.bands %>
+<% for band in @other_user.bands %>
   <li class="span4">
     <div class="thumbnail">
       <%= image_tag band.image.url(:thumb) %>

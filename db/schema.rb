@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320202454) do
+ActiveRecord::Schema.define(:version => 20130322013549) do
 
   create_table "bands", :force => true do |t|
     t.string   "mbid"
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(:version => 20130320202454) do
 
   add_index "bumps", ["band_id"], :name => "index_bumps_on_band_id"
   add_index "bumps", ["user_id"], :name => "index_bumps_on_user_id"
+
+  create_table "friends", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "friends", ["user_id"], :name => "index_friends_on_user_id"
 
   create_table "listens", :force => true do |t|
     t.integer  "band_id"
