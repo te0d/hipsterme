@@ -1,14 +1,17 @@
 Hipsterme::Application.routes.draw do
+
   match "bands" => "band#index"
   match "bands/:id" => "band#show", :as => :band
 
   get "bump/index"
-  post "bump/new"
+  match "bump/new/:mbid" => "bump#new", :as => :bump_new
   match "bump/destroy/:id" => "bump#destroy", :as => :bump_destroy
   get "search/index"
   get "search/results"
 
   devise_for :users
+  
+  match "users/:id" => "users#show", :as => :user_show
 
   get "welcome/index"
 
@@ -61,7 +64,7 @@ Hipsterme::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => 'band#index'
 
   # See how all your routes lay out with "rake routes"
 

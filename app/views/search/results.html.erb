@@ -1,16 +1,29 @@
-<h2>Search</h2>
+<div class="page-header">
+  <h1>Search for Bands</h1>
+</div>
 
-<p>You searched for <%= @query %></p>
+<form action="results" method="get" class="form-search" >
+  <input type="text" name="query" placeholder="<%= @query %>" class="search-query">
+  <button type="submit" class="btn">Search</button>
+</form>
 
-<h3>Results:</h3>
+<h2>Results:</h2>
 
 <ul>
   <% for artist in @artists %>
   <% unless artist.css("name").first.nil? %>
-  <li><%= artist.css("name").first.content %>
-    <%= "- " + artist.css("disambiguation").first.content unless artist.css("disambiguation").first.nil? %>
-    <%= button_to "Bump", {:controller => 'bump', :action => 'new', :mbid => artist.attribute("id")} %>
-  </li>
+  
+  <div class="media">
+    <div class="pull-left">
+    
+    </div>
+    <div class="media-body">
+      <h3><%= artist.css("name").first.content %></h3>
+      <p><%= "- " + artist.css("disambiguation").first.content unless artist.css("disambiguation").first.nil? %>
+      <%= link_to "Bump", bump_new_url(artist.attribute("id")), :class => "btn btn-success pull-right" %></p>
+    </div>
+  </div>
+
   <% end %>
   <% end %>
 </ul>

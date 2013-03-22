@@ -5,7 +5,7 @@ class BumpController < ApplicationController
   
   def index
     @user = current_user
-    @bands = current_user.bands
+    @bands = current_user.bands.reverse
   end
 
   def new

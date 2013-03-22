@@ -13,7 +13,9 @@
         <div class="media-body">
           <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
           <% unless band.creator_id.nil? %>
-            <p>first bump by <%= User.find(band.creator_id).username %></p>
+            <% user = User.find(band.creator_id) %>
+            <p>first bump by <%= link_to user.username, user_show_url(:id => user.id) %><br />
+              <%= time_ago_in_words(band.created_at) %> ago</p>
           <% end %>
         </div>
       </div>

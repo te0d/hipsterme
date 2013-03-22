@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h1><%= @user.username %></h1>
+</div>
+
+<p>member for <%= time_ago_in_words(@user.created_at) %></p>
+
+<h2>Bumps</h2>
+
+<ul class="thumbnails">
+<% for band in @user.bands %>
+  <li class="span4">
+    <div class="thumbnail">
+      <%= image_tag band.image.url(:thumb) %>
+      <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
+      
+      <% if current_user.bands.exists?(band.id) %>
+        <%= link_to 'Unbump', bump_destroy_url(:id => band.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger" %>
+      <% else %>
+        <%= link_to 'Bump', bump_new_url(:mbid => band.mbid), :class => "btn btn-success" %>
+      <% end %>
+      
+    </div>
+  </li>
+<% end %>
+</ul>
