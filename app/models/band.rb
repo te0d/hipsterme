@@ -1,6 +1,7 @@
 class Band < ActiveRecord::Base
   attr_accessible :creator_id, :description, :mbid, :name, :image, :image_file_name
   
+  belongs_to :creator, :class_name => "User"
   has_many :bumps
   has_many :users, :through => :bumps
   has_many :listens

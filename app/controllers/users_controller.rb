@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    @other_user = User.find(params[:id])
+    @user = current_user
+    @other_user = User.includes(:bands).find(params[:id])
     @is_friend = current_user.friends.where(:friend_id => @other_user.id).exists? || current_user.id == @other_user.id
   end
   
