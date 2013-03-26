@@ -45,7 +45,7 @@ class BumpController < ApplicationController
       bump = Bump.new
       bump.user_id = current_user.id
       bump.band_id = band.id
-      if current_user.available_cred >= invested_cred
+      if current_user.available_cred.to_i >= invested_cred
         bump.invested_cred = invested_cred
         bump.cred_value = invested_cred
         current_user.available_cred -= invested_cred
