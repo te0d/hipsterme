@@ -4,7 +4,7 @@ Hipsterme::Application.routes.draw do
   match "bands/:id" => "band#show", :as => :band
 
   get "bump/index"
-  match "bump/new/:mbid" => "bump#new", :as => :bump_new
+  match "bump/new" => "bump#new", :as => :bump_new
   match "bump/destroy/:id" => "bump#destroy", :as => :bump_destroy
   get "search/index"
   get "search/results"

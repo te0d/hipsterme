@@ -5,6 +5,8 @@
 
 <p>a member for <%= time_ago_in_words(@user.created_at) %></p>
 
+<h2><%= number_to_currency(@user.available_cred, :unit => '') %> Cred</h1>
+
 <h2>Friends</h2>
 
 <ul>

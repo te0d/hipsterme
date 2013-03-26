@@ -19,8 +19,14 @@
     </div>
     <div class="media-body">
       <h3><%= artist.css("name").first.content %></h3>
-      <p><%= "- " + artist.css("disambiguation").first.content unless artist.css("disambiguation").first.nil? %>
-      <%= link_to "Bump", bump_new_url(artist.attribute("id")), :class => "btn btn-success pull-right" %></p>
+      <p><%= "- " + artist.css("disambiguation").first.content unless artist.css("disambiguation").first.nil? %></p>
+      
+      <%= form_tag("/bump/new", :method => 'post') do %>
+        <%= text_field_tag(:invested_cred) %>
+        <%= hidden_field_tag(:mbid, artist.attribute("id")) %>
+        <%= submit_tag "Bump", :class => "btn btn-success pull-right" %>
+      <% end %>
+      
     </div>
   </div>
 

@@ -5,12 +5,13 @@ class BumpController < ApplicationController
   
   def index
     @user = current_user
-    @bands = current_user.bands.reverse
+    @bumps = @user.bumps.includes(:band).where(:unbumped_at => nil)
   end
 
   def new
     # get the unique musicbrainz to grab data from musicbrainz and lastfm
     band_mbid = params[:mbid]
+    invested_cred = params[:invested_cred].to_i
     
     # check to see if the band exists in the db, if not add it
     if Band.where(:mbid => band_mbid).empty?
@@ -40,14 +41,33 @@ class BumpController < ApplicationController
       
     end
     
-    current_user.bands.push(band) unless current_user.bands.include?(band)
+    if Bump.where(:user_id => current_user.id, :band_id => band.id, :unbumped_at => nil).empty?
+      bump = Bump.new
+      bump.user_id = current_user.id
+      bump.band_id = band.id
+      if current_user.available_cred >= invested_cred
+        bump.invested_cred = invested_cred
+        bump.cred_value = invested_cred
+        current_user.available_cred -= invested_cred
+        current_user.save
+      end
+      bump.save
+    end
     
     redirect_to :action => 'index'
   end
 
   def destroy
-    band = Band.find(params[:id])
-    current_user.bands.delete(band)
+    # find bump via url and define unbumped_at
+    bump = Bump.find(params[:id])
+    bump.unbumped_at = Time.now
+    # consider recalculating the cred_value
+    bump.save
+    
+    # take the value attributed to the bump and add to user's available
+    user = bump.user
+    user.available_cred += bump.cred_value
+    user.save
     
     redirect_to :action => 'index'
   end

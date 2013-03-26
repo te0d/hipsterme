@@ -3,12 +3,15 @@
 </div>
 
 <ul class="thumbnails">
-<% for band in @bands %>
+<% for bump in @bumps %>
   <li class="span4">
     <div class="thumbnail">
-      <%= image_tag band.image.url(:thumb) %>
-      <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
-      <%= link_to 'Unbump', bump_destroy_url(:id => band.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger" %>
+      <%= image_tag bump.band.image.url(:thumb) %>
+      <h3><%= link_to bump.band.name, band_url(:id => bump.band.id) %></h3>
+      <p>
+        <%= number_to_currency(bump.cred_value, :unit => '') %> Cred
+        <%= link_to 'Unbump', bump_destroy_url(:id => bump.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger" %>
+      </p>
     </div>
   </li>
 <% end %>
