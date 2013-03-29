@@ -1,0 +1,9 @@
+<% if user.bands.exists?(band.id) %>
+  <%= link_to 'Unbump', bump_destroy_url(:id => band.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger pull-right" %>
+<% else %>
+  <%= form_tag("/bump/new", :method => 'post') do %>
+    <%= text_field_tag(:invested_cred, nil, :placeholder => "Cred") %>
+    <%= hidden_field_tag(:mbid, band.mbid) %>
+    <%= submit_tag "Bump", :class => "btn btn-success pull-right" %>
+  <% end %>
+<% end %>

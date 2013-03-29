@@ -18,11 +18,7 @@
       <%= image_tag band.image.url(:thumb) %>
       <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
       
-      <% if @user.bands.exists?(band.id) %>
-        <%= link_to 'Unbump', bump_destroy_url(:id => band.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger" %>
-      <% else %>
-        <%= link_to 'Bump', bump_new_url(:mbid => band.mbid), :class => "btn btn-success" %>
-      <% end %>
+      <%= render :partial => "bump/manage_bump", :locals => {:user => @user, :band => band} %>
       
     </div>
   </li>

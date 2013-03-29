@@ -11,5 +11,13 @@ class SearchController < ApplicationController
     
     brainzResults = Nokogiri::XML(open("http://www.musicbrainz.org/ws/2/artist/?query=artist:#{@query}"))
     @artists = brainzResults.css("artist")
+    @bands = @artists.map do |artist|
+      band = Band.where(:mbid => artist["id"])
+      if band.empty?
+        nil
+      else
+        band.first
+      end
+    end
   end
 end

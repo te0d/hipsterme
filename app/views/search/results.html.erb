@@ -10,7 +10,7 @@
 <h2>Results:</h2>
 
 <ul>
-  <% for artist in @artists %>
+  <% @artists.each_with_index do |artist, i| %>
   <% unless artist.css("name").first.nil? %>
   
   <div class="media">
@@ -21,10 +21,14 @@
       <h3><%= artist.css("name").first.content %></h3>
       <p><%= "- " + artist.css("disambiguation").first.content unless artist.css("disambiguation").first.nil? %></p>
       
-      <%= form_tag("/bump/new", :method => 'post') do %>
-        <%= text_field_tag(:invested_cred) %>
-        <%= hidden_field_tag(:mbid, artist.attribute("id")) %>
-        <%= submit_tag "Bump", :class => "btn btn-success pull-right" %>
+      <% if @bands[i].nil? %>
+        <%= form_tag("/bump/new", :method => 'post') do %>
+          <%= text_field_tag(:invested_cred, nil, :placeholder => "Cred") %>
+          <%= hidden_field_tag(:mbid, artist["id"]) %>
+          <%= submit_tag "Bump", :class => "btn btn-success pull-right" %>
+        <% end %>
+      <% else %>
+        <%= render :partial => "bump/manage_bump", :locals => {:user => current_user, :band => @bands[i]} %>
       <% end %>
       
     </div>

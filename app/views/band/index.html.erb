@@ -13,9 +13,12 @@
         <div class="media-body">
           <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
           <% unless band.creator_id.nil? %>
-            <% user = band.creator %>
-            <p>first bump by <%= link_to user.username, user_show_url(:id => user.id) %><br />
+            <% creator = band.creator %>
+            <p>first bump by <%= link_to creator.username, user_show_url(:id => creator.id) %><br />
               <%= time_ago_in_words(band.created_at) %> ago</p>
+            
+            
+            <%= render :partial => "bump/manage_bump", :locals => {:user => current_user, :band => band} %>
           <% end %>
         </div>
       </div>
