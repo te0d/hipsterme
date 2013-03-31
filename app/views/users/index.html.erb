@@ -5,7 +5,7 @@
 
 <p>a member for <%= time_ago_in_words(@user.created_at) %></p>
 
-<h2><%= number_to_currency(@user.available_cred, :unit => '') %> Cred</h1>
+<h2>Cred: <%= number_to_currency(@user.invested_cred, :unit => '') %> Invested; <%= number_to_currency(@user.available_cred, :unit => '') %> Available</h2>
 
 <h2>Friends</h2>
 

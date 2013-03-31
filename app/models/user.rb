@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
+  
+  def invested_cred
+    self.bumps.where(:unbumped_at => nil).sum :cred_value
+  end
 end
