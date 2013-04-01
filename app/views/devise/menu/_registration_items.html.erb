@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <li class="navbar-text"><%= number_to_currency(current_user.available_cred, :unit => '') %> Free Cred</li>
+  <li class="navbar-text"><%= number_to_currency(current_user.available_cred, :unit => '') %> Cred Unused</li>
   <li>
   <%= link_to(current_user.username, user_page_path) %>
   </li>
