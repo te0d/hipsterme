@@ -5,7 +5,7 @@
 <div class="row">
   <div class="span6">
     <h2>New Bumping Bands</h2>
-    <% for band in @new_bumps %>
+    <% for band in @new_bands %>
       <div class="media">
         <div class="pull-left">
           <%= image_tag band.image.url, :class => "img-polaroid" %>
@@ -18,14 +18,34 @@
               <%= time_ago_in_words(band.created_at) %> ago</p>
             
             <% if user_signed_in? %>
-              <%= render :partial => "bump/manage_bump", :locals => {:user => current_user, :band => band} %>
+              <%= render :partial => "bump/manage_bump", :locals => {:user => current_user, :band => band, :bump => band.bumps.where(:user_id => current_user.id, :unbumped_at => nil).first} %>
             <% end %>
           <% end %>
         </div>
       </div>
     <% end %>
   </div>
+  
   <div class="span6">
     <h2>Hottest Bumping Bands</h2>
+    <% for band in @hot_bands %>
+      <div class="media">
+        <div class="pull-left">
+          <%= image_tag band.image.url, :class => "img-polaroid" %>
+        </div>
+        <div class="media-body">
+          <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
+          <% unless band.creator_id.nil? %>
+            <% creator = band.creator %>
+            <p>first bump by <%= link_to creator.username, user_show_url(:id => creator.id) %><br />
+              <%= band.bumps.length %> bumps since <%= time_ago_in_words(band.created_at) %> ago</p>
+            
+            <% if user_signed_in? %>
+              <%= render :partial => "bump/manage_bump", :locals => {:user => current_user, :band => band, :bump => band.bumps.where(:user_id => current_user.id, :unbumped_at => nil).first} %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

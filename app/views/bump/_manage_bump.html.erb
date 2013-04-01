@@ -1,6 +1,5 @@
-<% bump = user.bumps.where(:band_id => band.id, :unbumped_at => nil).first %>
 <% unless bump.nil? %>
-  <%= link_to 'Unbump', bump_destroy_url(:id => bump.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger pull-right" %>
+  <p><%= number_to_currency(bump.cred_value, :unit => '') %> Cred <%= link_to 'Unbump', bump_destroy_url(:id => bump.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger pull-right" %></p>
 <% else %>
   <%= form_tag("/bump/new", :method => 'post') do %>
     <%= text_field_tag(:invested_cred, nil, :placeholder => "Cred") %>

@@ -1,7 +1,7 @@
 class BandController < ApplicationController
   def index
-    @new_bumps = Band.includes(:creator).order("created_at DESC").limit(5)
-
+    @new_bands = Band.includes(:creator, :bumps).order("created_at DESC").limit(5)
+    @hot_bands = Band.top5
   end
 
   def show

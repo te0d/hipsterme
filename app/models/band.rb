@@ -8,6 +8,13 @@ class Band < ActiveRecord::Base
   
   has_attached_file :image, :styles => {:thumb => ["300x200#"]}
   
+  scope :top5,
+    select("bands.*, count(bumps.id) AS bump_count").
+    joins(:bumps).
+    group("bands.id").
+    order("bump_count DESC").
+    limit(5)
+  
   def update_listens
     lastfmXML = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid=#{self.mbid}&api_key=#{ENV['LASTFM_API_KEY']}"))
     self.listens.push(Listen.new(:count => lastfmXML.css("listeners").first.content))

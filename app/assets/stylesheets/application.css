@@ -11,3 +11,7 @@
  *= require_self
  *= require_tree .
  */
+ 
+.thumbnail h3 {
+  font-size: 1.5em;
+}

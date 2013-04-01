@@ -17,9 +17,7 @@
     <div class="thumbnail">
       <%= image_tag band.image.url(:thumb) %>
       <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
-      
-      <%= render :partial => "bump/manage_bump", :locals => {:user => @user, :band => band} %>
-      
+      <%= render :partial => "bump/manage_bump", :locals => {:user => @user, :band => band, :bump => @user.bumps.where(:band_id => band.id, :unbumped_at => nil).first} %>
     </div>
   </li>
 <% end %>
