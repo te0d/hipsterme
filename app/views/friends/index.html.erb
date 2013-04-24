@@ -1,0 +1,8 @@
+<h1>Friends</h1>
+
+<% for friend in @friends %>
+  <li>
+    <%= link_to friend.username, user_show_url(:id => friend.id) %>
+    <%= link_to 'Remove', user_del_friend_url(:id => friend.id), :class => "btn btn-mini btn-danger" %>
+  </li>
+<% end %>

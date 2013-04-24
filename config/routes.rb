@@ -1,5 +1,7 @@
 Hipsterme::Application.routes.draw do
 
+  resources :friends, :only => [:index]
+
   match "bands" => "band#index"
   match "bands/:id" => "band#show", :as => :band
 
