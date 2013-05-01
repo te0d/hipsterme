@@ -26,6 +26,7 @@ class BumpController < ApplicationController
       # parse out band information
       lastfmXML.css("similar").remove
       band.name = brainzXML.css("name").first.content
+      band.lastfm_desc = lastfmXML.css("summary").first.content
       for image in lastfmXML.css("image")
         image_url = image.content if image.attr('size') == 'extralarge'
       end

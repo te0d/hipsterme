@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130324232658) do
+ActiveRecord::Schema.define(:version => 20130501170358) do
 
   create_table "bands", :force => true do |t|
     t.string   "mbid"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130324232658) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "creator_id"
+    t.text     "lastfm_desc"
   end
 
   create_table "bands_users", :force => true do |t|

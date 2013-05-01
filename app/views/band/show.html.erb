@@ -1,4 +1,13 @@
-<h1><%= @band.name %></h1>
+<div class="page-header">
+  <h1><%= @band.name %></h1>
+</div>
+
+<%= image_tag @band.image.url, :class => "img-polaroid pull-left" %>
+<p><em>first bump at <%= @band.created_at %></em></p>
+<p><em>by <%= link_to @band.creator.username, user_show_path(@band.creator) %></em></p>
+
+<p><strong>Description:</strong></p>
+<p><%= raw @band.lastfm_desc %></p>
 
 <canvas id="bandListensChart" width="800" height="400"></canvas>
 
