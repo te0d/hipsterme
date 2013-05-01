@@ -22,3 +22,14 @@ task :update_listens => :environment do
     end
   end
 end
+
+desc 'for periodic updating of band info from lastfm'
+task :update_band_info => :environment do
+  Band.all.each do |band|
+    lastfmXML = Nokogiri::XML(open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&mbid=#{band.mbid}&api_key=#{ENV['LASTFM_API_KEY']}"))
+    lastfmXML.css("similar").remove
+    
+    band.lastfm_desc = lastfmXML.css("summary").first.content
+    band.save
+  end
+end
