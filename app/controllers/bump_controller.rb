@@ -5,7 +5,7 @@ class BumpController < ApplicationController
   
   def index
     @user = current_user
-    @bumps = @user.bumps.includes(:band).where(:unbumped_at => nil)
+    @bumps = @user.bumps.includes(:band).where(:unbumped_at => nil).order("cred_value DESC")
   end
 
   def new
