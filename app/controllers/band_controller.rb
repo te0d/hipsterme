@@ -6,5 +6,6 @@ class BandController < ApplicationController
 
   def show
     @band = Band.find(params[:id])
+    @listens = @band.listens
   end
 end

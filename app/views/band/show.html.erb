@@ -1,10 +1,39 @@
 <h1><%= @band.name %></h1>
 
-<table>
-<% for listen in @band.listens %>
+<canvas id="bandListensChart" width="800" height="400"></canvas>
+
+<table class="table">
+  <tr>
+    <th>When</th>
+    <th>Listens</th>
+  </tr>
+<% for listen in @listens %>
   <tr>
     <td><%= listen.created_at %></td>
     <td><%= listen.count %></td>
   </tr>
 <% end %>
 </table>
+
+<script>
+  // creates a line graph of band's listens using Chart.js
+  
+  var data = {
+    labels : <%= raw @listens.last(10).map {|l| l.created_at.to_s} %>,
+    datasets : [
+      {
+      	fillColor : "rgba(220,220,220,0.5)",
+			  strokeColor : "rgba(220,220,220,1)",
+			  pointColor : "rgba(220,220,220,1)",
+			  pointStrokeColor : "#fff",
+        data : <%= @listens.last(10).map {|l| l.count} %>
+      }
+    ]
+  };
+  
+  var options = {};
+    
+  var context = $("#bandListensChart").get(0).getContext("2d");
+  var listensChart = new Chart(context).Line(data,options);
+  
+</script>

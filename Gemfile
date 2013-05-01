@@ -52,3 +52,6 @@ gem 'aws-sdk'
 
 # Twitter's Bootstrap CSS framework
 gem 'bootstrap-sass'
+
+# for creating html5 chart in canvas using Chart.js
+gem 'chartjs-rails'
