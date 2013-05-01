@@ -2,27 +2,38 @@
   <h1><%= @band.name %></h1>
 </div>
 
-<%= image_tag @band.image.url, :class => "img-polaroid pull-left" %>
-<p><em>first bump at <%= @band.created_at %></em></p>
-<p><em>by <%= link_to @band.creator.username, user_show_path(@band.creator) %></em></p>
+<div class="row">
+  <div class="span4">
+    <%= image_tag @band.image.url, :class => "img-polaroid" %>
+  </div>
+  <div class="span8">
+    <p><em>first bump at <%= @band.created_at %></em></p>
+    <p><em>by <%= link_to @band.creator.username, user_show_path(@band.creator) %></em></p>
+    <h3>Description:</h3>
+    <p><%= raw @band.lastfm_desc %></p>
+  </div>
+</div>
 
-<p><strong>Description:</strong></p>
-<p><%= raw @band.lastfm_desc %></p>
+<div class="row">
+<div class="span12">
+  <h3>Listens</h3>
 
-<canvas id="bandListensChart" width="800" height="400"></canvas>
+  <canvas id="bandListensChart" width="800" height="400"></canvas>
 
-<table class="table">
-  <tr>
-    <th>When</th>
-    <th>Listens</th>
-  </tr>
-<% for listen in @listens %>
-  <tr>
-    <td><%= listen.created_at %></td>
-    <td><%= listen.count %></td>
-  </tr>
-<% end %>
-</table>
+  <table class="table">
+    <tr>
+      <th>When</th>
+      <th>Listens</th>
+    </tr>
+  <% for listen in @listens %>
+    <tr>
+      <td><%= listen.created_at %></td>
+      <td><%= listen.count %></td>
+    </tr>
+  <% end %>
+  </table>
+</div>
+</div>
 
 <script>
   // creates a line graph of band's listens using Chart.js
