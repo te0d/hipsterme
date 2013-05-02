@@ -11,7 +11,7 @@
       <h3><%= link_to bump.band.name, band_path(bump.band) %></h3>
       <p>
         <%= number_to_currency(bump.cred_value, :unit => '') %> Cred
-        <%= link_to 'Unbump', bump_destroy_url(:id => bump.id), :confirm => "Are you sure?", :class => "btn btn-small btn-danger" %>
+        <%= link_to 'Unbump', bump_path(bump), :confirm => "Are you sure?", :action => :delete, :class => "btn btn-small btn-danger" %>
       </p>
     </div>
   </li>

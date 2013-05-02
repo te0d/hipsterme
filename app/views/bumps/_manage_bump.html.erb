@@ -1,0 +1,9 @@
+<% unless bump.nil? %>
+  <p><%= number_to_currency(bump.cred_value, :unit => '') %> Cred <%= link_to 'Unbump', bump_path(bump), :confirm => "Are you sure?", :method => :delete, :class => "btn btn-small btn-danger pull-right" %></p>
+<% else %>
+  <%= form_tag(new_bump_path, :method => 'get') do %>
+    <%= text_field_tag(:invested_cred, nil, :placeholder => "Cred") %>
+    <%= hidden_field_tag(:mbid, band.mbid) %>
+    <%= submit_tag "Bump", :class => "btn btn-success pull-right" %>
+  <% end %>
+<% end %>

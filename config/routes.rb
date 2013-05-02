@@ -3,13 +3,16 @@ Hipsterme::Application.routes.draw do
   resources :friends, :only => [:index]
 
   resources :bands, :only => [:index, :show]
+  
+  resources :bumps
 
 #  match "bands" => "band#index"
 #  match "bands/:id" => "band#show", :as => :band
 
-  get "bump/index"
-  match "bump/new" => "bump#new", :as => :bump_new
-  match "bump/destroy/:id" => "bump#destroy", :as => :bump_destroy
+#  get "bump/index"
+#  match "bump/new" => "bump#new", :as => :bump_new
+#  match "bump/destroy/:id" => "bump#destroy", :as => :bump_destroy
+
   get "search/index"
   get "search/results"
 

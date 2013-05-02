@@ -18,7 +18,7 @@
               <%= time_ago_in_words(band.created_at) %> ago</p>
             
             <% if user_signed_in? %>
-              <%= render :partial => "bump/manage_bump", :locals => {:user => current_user, :band => band, :bump => band.bumps.where(:user_id => current_user.id, :unbumped_at => nil).first} %>
+              <%= render :partial => "bumps/manage_bump", :locals => {:user => current_user, :band => band, :bump => band.bumps.where(:user_id => current_user.id, :unbumped_at => nil).first} %>
             <% end %>
           <% end %>
         </div>
@@ -41,7 +41,7 @@
               <%= band.bumps.length %> bumps since <%= time_ago_in_words(band.created_at) %> ago</p>
             
             <% if user_signed_in? %>
-              <%= render :partial => "bump/manage_bump", :locals => {:user => current_user, :band => band, :bump => band.bumps.where(:user_id => current_user.id, :unbumped_at => nil).first} %>
+              <%= render :partial => "bumps/manage_bump", :locals => {:user => current_user, :band => band, :bump => band.bumps.where(:user_id => current_user.id, :unbumped_at => nil).first} %>
             <% end %>
           <% end %>
         </div>

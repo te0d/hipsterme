@@ -18,7 +18,7 @@
           # devise namespace %>
         <li><%= link_to 'Browse', bands_path %></li>
         <li><%= link_to 'Search', :controller => '/search', :action => 'index' %></li>
-        <li><%= link_to 'Bands You Bump', :controller => '/bump', :action => 'index' %></li>
+        <li><%= link_to 'Bands You Bump', bumps_path %></li>
       </ul>
       <ul class="nav pull-right">
         <%= render 'devise/menu/registration_items' %>

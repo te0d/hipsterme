@@ -1,0 +1,2 @@
+module BumpsHelper
+end

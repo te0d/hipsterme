@@ -1,4 +1,4 @@
-class BumpController < ApplicationController
+class BumpsController < ApplicationController
   require 'open-uri'
   
   before_filter :authenticate_user!
@@ -6,6 +6,10 @@ class BumpController < ApplicationController
   def index
     @user = current_user
     @bumps = @user.bumps.includes(:band).where(:unbumped_at => nil).order("cred_value DESC")
+  end
+  
+  def show
+  
   end
 
   def new
@@ -56,6 +60,10 @@ class BumpController < ApplicationController
     end
     
     redirect_to :action => 'index'
+  end
+  
+  def edit
+  
   end
 
   def destroy
