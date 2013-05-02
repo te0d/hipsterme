@@ -2,8 +2,10 @@ Hipsterme::Application.routes.draw do
 
   resources :friends, :only => [:index]
 
-  match "bands" => "band#index"
-  match "bands/:id" => "band#show", :as => :band
+  resources :bands, :only => [:index, :show]
+
+#  match "bands" => "band#index"
+#  match "bands/:id" => "band#show", :as => :band
 
   get "bump/index"
   match "bump/new" => "bump#new", :as => :bump_new
@@ -69,7 +71,7 @@ Hipsterme::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'band#index'
+  root :to => 'bands#index'
 
   # See how all your routes lay out with "rake routes"
 

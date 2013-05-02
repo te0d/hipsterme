@@ -11,7 +11,7 @@
           <%= image_tag band.image.url, :class => "img-polaroid" %>
         </div>
         <div class="media-body">
-          <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
+          <h3><%= link_to band.name, band_path(band) %></h3>
           <% unless band.creator_id.nil? %>
             <% creator = band.creator %>
             <p>first bump by <%= link_to creator.username, user_show_url(:id => creator.id) %><br />
@@ -34,7 +34,7 @@
           <%= image_tag band.image.url, :class => "img-polaroid" %>
         </div>
         <div class="media-body">
-          <h3><%= link_to band.name, band_url(:id => band.id) %></h3>
+          <h3><%= link_to band.name, band_path(band) %></h3>
           <% unless band.creator_id.nil? %>
             <% creator = band.creator %>
             <p>first bump by <%= link_to creator.username, user_show_url(:id => creator.id) %><br />
